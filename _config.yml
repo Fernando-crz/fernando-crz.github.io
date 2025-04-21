@@ -22,7 +22,7 @@ title: MAC0470 - Blog de Contribuições
 email: fernandof.cruz@usp.br
 description: >- # this means to ignore newlines until "baseurl:"
   Um blog com o intuito de documentar os andamentos da disciplina de MAC0470 - Desenvolvimento de Software Livre
-baseurl: "https://fernando-crz.github.io/mac0470" # the subpath of your site, e.g. /blog
+baseurl: "https://fernando-crz.github.io" # the subpath of your site, e.g. /blog
 url: "https://fernando-crz.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  Fernando-crz
 
