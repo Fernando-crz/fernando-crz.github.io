@@ -1,0 +1,67 @@
+---
+layout: post
+title:  "Diário de MAC0470"
+date:   2025-04-21 17:25:15 -0300
+categories: post
+---
+
+Aluno: **Antonio Fernando Silva e Cruz Filho**
+
+Dupla: **André Nogueira Ribeiro**
+
+Esse é o meu diário de trabalho da disciplina MAC0470 - Desenvolvimento de Software Livre. Aqui, documento todas as atividades realizadas na disciplinas, apresentando tanto as dificuldades quanto momentos de sucesso. Eu e minha dupla fomos selecionados para utilizar o kw para contribuições ao Kernel Linux na disciplina.
+
+
+### **Diário de Trabalhos**
+
+#### **Semana 26/02**
+
+Realização do primeiro tutorial. Inicialmente tive dificuldades pois não tinha computadores com Linux. Visando consertar o problema, resolvi instalar Linux no meu computador pessoal. Entretanto, o mesmo é muito pesado para transporte, então resolvi levar o meu outro computador MAC mais leve para as aulas. Para poder acompanhar as aulas, instalei SSH no meu computador pesado e utilizo o programa [ZeroTier](https://www.zerotier.com/), um programa capaz de definir uma VPN pessoal sem necessidade de abrir as portas do meu roteador.
+
+#### **Semana 12/03**
+
+Realização do segundo tutorial sem muitas dificuldades.
+
+#### **Semana 19/03**
+
+Realização do terceiro tutorial. Tive dificuldades por conta de um bug provavelmente relacionado com um erro de digitação e acabei conseguindo mitigá-lo ao fazer o tutorial 1 e 2 novamente.
+
+#### **Semana 26/03**
+
+Tive um pouco de dificuldade de entender o quarto tutorial, porém depois de múltiplas releituras, pude entender como _Character Device Drivers_ funcionam (o suficiente para poder continuar com as contribuições com o Kernel Linux).
+
+#### **Semana 02/04**
+
+Realização do tutorial 5 sem muitos problemas.
+
+#### **Semana 09/04 + Break**
+
+Escolhemos a sugestão _"Add prefix to DC functions to improve the debug with ftrace"_ para realizarmos nosso primeiro patch. Tal tarefa tem como objetivo renomear funções de diferentes escopos que possuem o mesmo nome. Essa mudança possibilita que o usuário entenda facilmente qual função está sendo executada ao utilizar o *ftrace* (ferramenta de debugging). Primeiramente, clonamos a [branch](https://gitlab.freedesktop.org/agd5f/linux) correta do subsistema AMD e encontramos a possibilidade de melhoria no arquivo _drivers/gpu/drm/amd/display/dc/dce80/dce80_timing_generator.c_. As modificações realizadas foram:
+
+```diff
+diff --git a/drivers/gpu/drm/amd/display/dc/dce80/dce80_timing_generator.c b/drivers/gpu/drm/amd/display/dc/dce80/dce80_timing_generator.c
+index 003a9330c..88e7a1fc9 100644
+--- a/drivers/gpu/drm/amd/display/dc/dce80/dce80_timing_generator.c
++++ b/drivers/gpu/drm/amd/display/dc/dce80/dce80_timing_generator.c
+@@ -105,7 +105,7 @@ static void program_pix_dur(struct timing_generator *tg, uint32_t pix_clk_100hz)
+        dm_write_reg(tg->ctx, addr, value);
+ }
+ 
+-static void program_timing(struct timing_generator *tg,
++static void dce80_timing_generator_program_timing(struct timing_generator *tg,
+        const struct dc_crtc_timing *timing,
+        int vready_offset,
+        int vstartup_start,
+@@ -185,7 +185,7 @@ static void dce80_timing_generator_enable_advanced_request(
+ 
+ static const struct timing_generator_funcs dce80_tg_funcs = {
+                .validate_timing = dce110_tg_validate_timing,
+-               .program_timing = program_timing,
++               .program_timing = dce80_timing_generator_program_timing,
+                .enable_crtc = dce110_timing_generator_enable_crtc,
+                .disable_crtc = dce110_timing_generator_disable_crtc,
+                .is_counter_moving = dce110_timing_generator_is_counter_moving,
+```
+
+
+Para garantir que as mudanças não quebrariam a compilação, foi necessário estudar os arquivos *Makefile* associados para entender como habilitar a compilação da parte do código que alteramos. No nosso caso, a configuração habilitada foi *"DRM_AMD_DC"*. Após garantir que a mudança não gerou erros de compilação, seguimos o tutorial para enviar o patch para o email freesoftware2025@gmail.com.
