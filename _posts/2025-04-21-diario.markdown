@@ -65,3 +65,19 @@ index 003a9330c..88e7a1fc9 100644
 
 
 Para garantir que as mudanças não quebrariam a compilação, foi necessário estudar os arquivos *Makefile* associados para entender como habilitar a compilação da parte do código que alteramos. No nosso caso, a configuração habilitada foi *"DRM_AMD_DC"*. Após garantir que a mudança não gerou erros de compilação, seguimos o tutorial para enviar o patch para o email freesoftware2025@gmail.com.
+
+#### Semana 23/04
+
+Seguindo a sugestão do David, melhoramos nossa mensagem de commit e realizamos o envio do Patch com sucesso. Em pouco tempo, recebemos uma resposta positiva do mantenedor: Nosso Patch foi aceito! [(Link Patch)](https://lore.kernel.org/amd-gfx/CADnq5_OrVtVXCoDxZU8ngFpDywFj3c6Wx-MOt2DJUdiU3SKp2w@mail.gmail.com/T/#t)
+
+#### Semana 30/04
+
+Realizamos a busca por nosso novo projeto de Software Livre. Decidimos seguir com o GNOME, por conta de sua comunidade tipicamente ativa, clareza em issues para novatos e projetos interessantes. Incialmente, decidimos contribuir para o GNOME Music, porém, depois de não recebermos respostas a nossa mensagem inicial no servidor de conversas do projeto, decidimos contribuir com GNOME Calendar, dado sua comunidade ativa. Não conseguimos entrar no servidor de conversas deles, mas mandamos uma mensagem em um Issue que pareceu interessante. 
+
+#### Semana 07/05
+
+Enfrentei diversas dificuldades com a instalação do ambiente de desenvolvimento GNOME. Incialmente, desejava compilar o projeto pelo meu terminal, possibilitando o desenvolvimento remotamente usando SSH (Mesmo não podendo ver a interface do programa, poderia ver se o mesmo compilaria). Porém, não consegui de forma nenhuma compilar o projeto pelo terminal. Acabei instalando o Builder em minha máquina e utilizando sua interface. Costumo a utilizar meu MAC, porém a tarefa se tornou um pouco mais difícil, já que não poderei mais utilizar SSH. 
+
+#### Semana 14/05
+
+Os desenvolvedores do GNOME Calendar apontaram que nossa issue inicialmente escolhida pode não ser uma boa primeira issue. Assim, decidimos alterar nossa issue para a [#717](https://gitlab.gnome.org/GNOME/gnome-calendar/-/issues/717), que se trata da implementação de um setting de disponibilidade para eventos individuais, permitindo definições automáticas de *Não perturbe* e bloqueamento de outros eventos na agenda durante o mesmo horário. Explorei a estrutura do código visando compreender como a interface do programa é construída e como poderemos adicionar novos elementos com novas lógicas de negócio envolvidas. 
