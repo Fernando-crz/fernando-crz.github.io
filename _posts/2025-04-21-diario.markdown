@@ -81,3 +81,22 @@ Enfrentei diversas dificuldades com a instalação do ambiente de desenvolviment
 #### Semana 14/05
 
 Os desenvolvedores do GNOME Calendar apontaram que nossa issue inicialmente escolhida pode não ser uma boa primeira issue. Assim, decidimos alterar nossa issue para a [#717](https://gitlab.gnome.org/GNOME/gnome-calendar/-/issues/717), que se trata da implementação de um setting de disponibilidade para eventos individuais, permitindo definições automáticas de *Não perturbe* e bloqueamento de outros eventos na agenda durante o mesmo horário. Explorei a estrutura do código visando compreender como a interface do programa é construída e como poderemos adicionar novos elementos com novas lógicas de negócio envolvidas. 
+
+#### Semana 21/05 + Break
+
+Após uma boa análise do código e dificuldades em replicar o problema antes mencionado, acabamos decidindo mais uma vez escolher uma nova _issue_. Seguindo recomendações dos mantenedores, resolvemos trabalhar na issue [#1021](https://gitlab.gnome.org/GNOME/gnome-calendar/-/issues/1021). Dessa vez, conseguimos replicar o bug sem muitos problemas. Utilizando logging e buscas avançadas no repositório, localizamos a função que precisava ser modificada no contexto do problema. Após consertarmos o bug seguindo o conselho do _Jeff Fortin_, criamos nosso MR: [!583](https://gitlab.gnome.org/GNOME/gnome-calendar/-/merge_requests/583).
+
+#### Semana 04/06
+
+Depois de pouco tempo, recebemos feedback para nosso MR. Após poucos ajustes de mensagem de commit, o Jeff validou que nosso MR realmente funcionava. Entretanto, outro desenvolvedor acabou se envolvendo na discussão e apontou que nossas mudanças poderiam dificultar o merge do seu respectivo MR. Além disso, o mesmo opinou que nossas mudanças alteram o comportamento do app de uma forma não desejada.
+
+Depois de esperar o merge do outro desenvolvedor, propomos uma nova abordagem para a nossa implementação. 
+
+#### Semana 11/06
+
+Por enquanto que esperávamos _feedback_, foquei em realizar o setup para o workshop de Debian. Acabei enfrentando um problema onde minha máquina virtual simplesmente não executava o programa _Hello_, que serviria como validação se minha instalação tivesse dado certo (não foi o caso 😅). Acabei descobrindo que a forma como eu estava aumentando a memória da minha máquina virtual estava incorreta. Ao invés de expandir a partição virtual onde estava o sistema operacional da máquina virtual, eu estava criando outra partição acidentalmente. Com o problema resolvido, consegui realizar o workshop sem muitos problemas!
+
+Quanto ao MR do GNOME Calendar, ainda não recebemos feedback. Durante o tempo de espera, investigamos como poderíamos implementar a solução que propomos, mesmo sem ter recebido feedback ainda.
+
+#### Semana 18/06
+
