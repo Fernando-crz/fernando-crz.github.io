@@ -108,6 +108,7 @@ Conseguimos encontarar uma solução que levasse em consideração o novo compor
 
 No app do *Calendar*, há três modos de visualização, chamados de *Views* possíveis:
 - AGENDA_VIEW (Visualização de mini calendário)
+<img src="{{site.url}}/images/agenda-view.png" style="display: block; margin: auto;" />
 ![](images/agenda-view.png)
 - MONTH_VIEW (Visualização de mês inteiro)
 ![](images/month-view.png)
