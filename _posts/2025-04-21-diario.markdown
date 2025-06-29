@@ -96,7 +96,26 @@ Depois de esperar o merge do outro desenvolvedor, propomos uma nova abordagem pa
 
 Por enquanto que esperávamos _feedback_, foquei em realizar o setup para o workshop de Debian. Acabei enfrentando um problema onde minha máquina virtual simplesmente não executava o programa _Hello_, que serviria como validação se minha instalação tivesse dado certo (não foi o caso 😅). Acabei descobrindo que a forma como eu estava aumentando a memória da minha máquina virtual estava incorreta. Ao invés de expandir a partição virtual onde estava o sistema operacional da máquina virtual, eu estava criando outra partição acidentalmente. Com o problema resolvido, consegui realizar o workshop sem muitos problemas!
 
+Com o workshop feito, em pouco tempo depois recebemos a aprovação dos contribuidores:
+
+![](images/debian-mr-approval.png)
+
 Quanto ao MR do GNOME Calendar, ainda não recebemos feedback. Durante o tempo de espera, investigamos como poderíamos implementar a solução que propomos, mesmo sem ter recebido feedback ainda.
 
 #### Semana 18/06
 
+Conseguimos encontarar uma solução que levasse em consideração o novo comportamento esperado pelos mantenedores. Abaixo dou um pouco mais de detalhes sobre o que foi feito funcionalmente.
+
+No app do *Calendar*, há três modos de visualização, chamados de *Views* possíveis:
+- AGENDA_VIEW (Visualização de mini calendário)
+![](images/agenda-view.png)
+- MONTH_VIEW (Visualização de mês inteiro)
+![](images/month-view.png)
+- WEEK_VIEW (Visualização de semana)
+![](images/week-view.png)
+
+Para a *View* de Agenda, resolvemos manter o comportamento previamente implementado, que se trata de ativar o botão Today toda vez que o dia ativo selecionado é diferente do dia de hoje.
+
+Já para as *Views* de *Month* e *Week*, decidimos implementar uma funcionalidade onde o botão *Today* só estará ativo se o dia de hoje não é visível pelo usuário do aplicativo, seguindo o conselho do outro mantenedor. Isso pode ocorrer se o usuário ir para outra semana na *Week View* ou outro mês na *Month View*.
+
+Com essas modificações feitas, enviamos nossas novas mudanças e aguardamos feedback e aprovação do ***Jeff Fortin*** para enfim termos nosso código presente no *GNOME Calendar*.
