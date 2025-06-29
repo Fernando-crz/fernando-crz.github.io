@@ -98,7 +98,7 @@ Por enquanto que esperávamos _feedback_, foquei em realizar o setup para o work
 
 Com o workshop feito, em pouco tempo depois recebemos a aprovação dos contribuidores:
 
-![](images/debian-mr-approval.png)
+<img src="{{site.url}}/images/debian-mr-approval.png" style="display: block; margin: auto;" />
 
 Quanto ao MR do GNOME Calendar, ainda não recebemos feedback. Durante o tempo de espera, investigamos como poderíamos implementar a solução que propomos, mesmo sem ter recebido feedback ainda.
 
@@ -109,11 +109,10 @@ Conseguimos encontarar uma solução que levasse em consideração o novo compor
 No app do *Calendar*, há três modos de visualização, chamados de *Views* possíveis:
 - AGENDA_VIEW (Visualização de mini calendário)
 <img src="{{site.url}}/images/agenda-view.png" style="display: block; margin: auto;" />
-![](images/agenda-view.png)
 - MONTH_VIEW (Visualização de mês inteiro)
-![](images/month-view.png)
+<img src="{{site.url}}/images/month-view.png" style="display: block; margin: auto;" />
 - WEEK_VIEW (Visualização de semana)
-![](images/week-view.png)
+<img src="{{site.url}}/images/week-view.png" style="display: block; margin: auto;" />
 
 Para a *View* de Agenda, resolvemos manter o comportamento previamente implementado, que se trata de ativar o botão Today toda vez que o dia ativo selecionado é diferente do dia de hoje.
 
